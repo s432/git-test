@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+function doSomething() {
+  var form = document.forms[0];
+  if (form.checkValidity()) {
+    var result = [];
+    for (var i = 0; i < form.length; i++) {
+      result.push(form[i].name + ":" + form[i].value);
+    }
+    alert(result.join("\n"));
+  }
+}
+function filesSelected() {
+  var files = document.getElementById("file").files;
+  for (var i = 0; i < files.length; i++) {
+    var fileName = files[i].fileName;
+    var fileSize = files[i].fileSize;
+    alert("name:" + fileName + " size:" + fileSize);
+  }
+}
+</script>
+</head>
+<body>
+<form>
+<fieldset>
+    text:<input name="text" autofocus type="text" autocomplete="on" list="greetings" placeholder="input me" required pattern="^[A-Z].*$"><br>
+    <datalist id="greetings" style="display: none;">
+      <option>Good Morning
+	  <option>Hello
+	  <option>Good Afternoon
+    </datalist>
+    datetime:<input name="datetime" type="datetime"><br>
+    datetime-local:<input name="datetime-local" type="datetime-local"><br>
+    date:<input name="date" type="date"><br>
+    month:<input name="month" type="month"><br>
+    week:<input name="week" type="week"><br>
+    time:<input name="week" type="time"><br>
+    number:<input name="number" type="number"><br>
+    range:<input name="range" type="range"><br>
+    email:<input name="email" type="email"><br>
+    url:<input name="url" type="url"><br>
+    search:<input name="search" type="search"><br>
+    telephone:<input name="telephone" type="tel"><br>
+	color:<input name="color" type="color"><br>
+	file(multiple):<input id="file" name="file" type="file" accept="image/*" multiple onchange="filesSelected()"><br>
+    <input type="submit" formmethod="post" formnovalidate formtarget="aaa" onclick="doSomething()" value="送信">
+</fieldset>
+</form>
+</body>
+</html>
